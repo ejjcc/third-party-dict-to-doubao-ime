@@ -2,20 +2,44 @@
 
 这个工具将第三方输入法的用户词库导入当前豆包输入法账号。目前支持微信输入法（WeType）本地词库和搜狗 `SGPU` 备份，后续可通过新增来源适配器继续扩展。
 
-它同时是一个可直接安装的 Codex Skill：`$third-party-dict-to-doubao-ime`。
+它同时是一个遵循开放 [Agent Skills 规范](https://agentskills.io/specification) 的可移植 Skill，不绑定某一家 Agent 产品。Claude Code、Codex、GitHub Copilot，以及其他兼容 `SKILL.md` 的 Agent 都可以使用同一份目录。
 
-## 安装 Skill
+## 安装 Agent Skill
+
+克隆仓库后，把整个目录放进所用 Agent 的个人或项目 Skill 目录。下面任选一个，不需要重复安装：
+
+### Claude Code
+
+```bash
+git clone https://github.com/ejjcc/third-party-dict-to-doubao-ime.git \
+  ~/.claude/skills/third-party-dict-to-doubao-ime
+```
+
+Claude Code 也支持放入项目级 `.claude/skills/third-party-dict-to-doubao-ime/`。
+
+### Codex
 
 ```bash
 git clone https://github.com/ejjcc/third-party-dict-to-doubao-ime.git \
   ~/.codex/skills/third-party-dict-to-doubao-ime
 ```
 
-重新打开 Codex 后，可直接使用：
+### GitHub Copilot
+
+```bash
+git clone https://github.com/ejjcc/third-party-dict-to-doubao-ime.git \
+  ~/.copilot/skills/third-party-dict-to-doubao-ime
+```
+
+项目级安装可放入 `.github/skills/` 或通用的 `.agents/skills/`。其他 Agent 请将仓库放入该产品支持的 Skill 目录。
+
+安装后直接用自然语言即可，例如：
 
 ```text
-使用 $third-party-dict-to-doubao-ime，识别受支持的第三方输入法词库，先 dry-run，再导入豆包输入法。
+识别我本机受支持的第三方输入法词库，先 dry-run，再安全导入豆包输入法。
 ```
+
+支持显式调用的客户端也可以使用各自语法，例如 Claude Code 和 GitHub Copilot 的 `/third-party-dict-to-doubao-ime`。是否自动触发则由客户端根据 `SKILL.md` 的描述决定。
 
 ## 结论与兼容性
 
@@ -100,7 +124,7 @@ python3 import_user_dict_to_doubao_ime.py --help
 
 ```bash
 python3 -m unittest discover -s tests -v
-python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py .
+uvx --from skills-ref agentskills validate /path/to/third-party-dict-to-doubao-ime
 ```
 
 本项目采用 [MIT License](LICENSE)。欢迎提交兼容性报告和改进，但请勿在 issue、日志或测试数据中上传真实个人词库。

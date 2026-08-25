@@ -2,6 +2,9 @@
 name: third-party-dict-to-doubao-ime
 description: Import third-party input-method user dictionaries into Doubao IME on macOS, with current support for WeType (微信输入法) and Sogou SGPU backups. Use for privacy-safe discovery, dry-run validation, backup, import, and verification; do not use for Windows, Android, iOS, unsupported source formats, or unrelated text conversion.
 license: MIT
+metadata:
+  author: ejjcc
+  version: "1.0.0"
 ---
 
 # Third-Party IME Dictionaries to Doubao IME
@@ -14,7 +17,7 @@ Use the bundled `import_user_dict_to_doubao_ime.py` instead of reimplementing su
 - Run a live import only when the user explicitly asks to import or otherwise authorizes modifying the Doubao user dictionary.
 - Treat a supplied Sogou `.bin`/`.sgpu` file as the Sogou source. Treat requests mentioning 微信输入法 or WeType as the WeType source. Require a new tested adapter before claiming support for another input method.
 
-Run commands from this skill directory so the adjacent reader module can be imported.
+Resolve commands relative to this skill directory so the adjacent reader module can be imported. Use the host agent's supported mechanism for locating the active skill directory; do not assume a vendor-specific home directory.
 
 ```bash
 python3 import_user_dict_to_doubao_ime.py --wetype-user-dict --dry-run

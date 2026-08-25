@@ -1,4 +1,0 @@
-interface:
-  display_name: "三方输入法词库导入豆包"
-  short_description: "安全迁移第三方输入法个人词库到豆包输入法，当前支持微信与搜狗"
-  default_prompt: "Use $third-party-dict-to-doubao-ime to identify my supported third-party IME dictionary, dry-run it, and safely import it into Doubao IME."
