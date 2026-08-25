@@ -1,17 +1,18 @@
 ---
-name: wechat-dict-to-doubao-ime
-description: Import a local WeType (微信输入法) or Sogou user dictionary into Doubao IME on macOS, including privacy-safe discovery, dry-run validation, backup, import, and verification. Use when the user asks to migrate, inspect, or validate personal input-method words for 豆包输入法; do not use for Windows, Android, iOS, or unrelated text conversion.
+name: third-party-dict-to-doubao-ime
+description: Import third-party input-method user dictionaries into Doubao IME on macOS, with current support for WeType (微信输入法) and Sogou SGPU backups. Use for privacy-safe discovery, dry-run validation, backup, import, and verification; do not use for Windows, Android, iOS, unsupported source formats, or unrelated text conversion.
+license: MIT
 ---
 
-# WeChat Dictionary to Doubao IME
+# Third-Party IME Dictionaries to Doubao IME
 
-Use the bundled `import_user_dict_to_doubao_ime.py` instead of reimplementing either database format.
+Use the bundled `import_user_dict_to_doubao_ime.py` instead of reimplementing supported database formats. The current source adapters are WeType `userDict/v5` and Sogou `.bin`/`.sgpu`; report other formats as unsupported rather than guessing their structure.
 
 ## Choose the operation
 
 - For feasibility checks, inspection, or diagnostics, run a dry-run. It may stop WeType briefly to copy a consistent local snapshot, then immediately restart it.
 - Run a live import only when the user explicitly asks to import or otherwise authorizes modifying the Doubao user dictionary.
-- Treat a supplied Sogou `.bin`/`.sgpu` file as the Sogou source. Treat requests mentioning 微信输入法 or WeType as the WeType source.
+- Treat a supplied Sogou `.bin`/`.sgpu` file as the Sogou source. Treat requests mentioning 微信输入法 or WeType as the WeType source. Require a new tested adapter before claiming support for another input method.
 
 Run commands from this skill directory so the adjacent reader module can be imported.
 

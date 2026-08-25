@@ -1,20 +1,20 @@
-# 微信输入法词库导入豆包输入法（macOS）
+# 第三方输入法词库导入豆包输入法（macOS）
 
-这个工具将本机微信输入法（WeType）的用户词库导入当前豆包输入法账号。它也保留了原有的搜狗 `SGPU` 备份导入能力。
+这个工具将第三方输入法的用户词库导入当前豆包输入法账号。目前支持微信输入法（WeType）本地词库和搜狗 `SGPU` 备份，后续可通过新增来源适配器继续扩展。
 
-它同时是一个可直接安装的 Codex Skill：`$wechat-dict-to-doubao-ime`。
+它同时是一个可直接安装的 Codex Skill：`$third-party-dict-to-doubao-ime`。
 
 ## 安装 Skill
 
 ```bash
-git clone https://github.com/ejjcc/wechat-dict-to-doubao-ime.git \
-  ~/.codex/skills/wechat-dict-to-doubao-ime
+git clone https://github.com/ejjcc/third-party-dict-to-doubao-ime.git \
+  ~/.codex/skills/third-party-dict-to-doubao-ime
 ```
 
 重新打开 Codex 后，可直接使用：
 
 ```text
-使用 $wechat-dict-to-doubao-ime，先 dry-run 微信输入法词库，再导入豆包输入法。
+使用 $third-party-dict-to-doubao-ime，识别受支持的第三方输入法词库，先 dry-run，再导入豆包输入法。
 ```
 
 ## 结论与兼容性
@@ -79,7 +79,7 @@ python3 import_user_dict_to_doubao_ime.py --wetype-user-dict --limit 100
 - 正式导入前的豆包备份位于运行目录的 `backup-before-import/`。
 - `--no-stop-wetype` 会在 WeType 运行时复制数据库，可能得到不一致快照，只建议诊断时使用。
 
-## 其他来源与参数
+## 搜狗来源与其他参数
 
 搜狗备份（需要 `pypinyin`）：
 
