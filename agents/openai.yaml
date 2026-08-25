@@ -1,0 +1,4 @@
+interface:
+  display_name: "微信词库导入豆包输入法"
+  short_description: "安全迁移微信输入法或搜狗个人词库到豆包输入法"
+  default_prompt: "Use $wechat-dict-to-doubao-ime to dry-run and safely import my local WeType user dictionary into Doubao IME."
